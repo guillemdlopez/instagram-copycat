@@ -6,9 +6,6 @@ class User < ApplicationRecord
 
   validates :username, :email, presence: true
   validates :full_name, presence: true
-  validates :full_name, format: { with: /\b([A-ZÀ-ÿ][-,a-z. ']+[ ]*)+/,
-  message: 'it only allows letters' }
-
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 end
