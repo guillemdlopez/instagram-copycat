@@ -1,6 +1,5 @@
 <div class="wrapper dashboard">
   <div class="container">
-    <h1>Dashboard</h1>
     <div class="row justify-content-center">
       <div class="col-lg-8 avatar-menu">
         <% @posts.each do |post| %>
@@ -41,6 +40,7 @@
           <% end %>
         <% end %>
       </div>
+      <!--- SIDE MENU --->
       <div class="col-lg-4">
         <div class="side-menu">
           <div class="user-info d-flex align-items-center">
@@ -49,6 +49,10 @@
               <strong><p class="mb-0"><%= current_user.username %></p></strong>
               <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
             </div>
+          </div>
+          <div class="sugerencias d-flex justify-content-between mt-4">
+            <p class="mb-0 text-secondary font-weight-bold">Other users</p>
+            <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
           </div>
         </div>
       </div>
