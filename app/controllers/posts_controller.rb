@@ -5,7 +5,6 @@ class PostsController < ApplicationController
     @posts = policy_scope(Post).order(created_at: :desc)
   end
 
-  # GET posts/post:id(1)
   def show; end
 
   def new

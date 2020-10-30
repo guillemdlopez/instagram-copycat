@@ -5,8 +5,10 @@
 <%= link_to 'Dashboard', dashboard_path %>
 
 <% # display only if the owner of the post is the current user logged in %>
-<% if @post.user == current_user%>
+<% if policy(@post).update?%>
   <%= link_to 'Edit', edit_post_path(@post) %>
+<% end %>
 
+<% if policy(@post).destroy? %>
   <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

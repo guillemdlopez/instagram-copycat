@@ -22,10 +22,16 @@ class PostPolicy < ApplicationPolicy
   # end
 
   def update?
-    record.user == user
+    user_owner_or_admin
   end
 
   def destroy?
-    user == record.user
+    user_owner_or_admin
+  end
+
+  private
+
+  def user_owner_or_admin
+    user == record.user || user.admin
   end
 end

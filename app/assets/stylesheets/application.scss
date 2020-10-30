@@ -11,3 +11,59 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+p {
+  font-size: 14px;
+}
+
+.inline-list li {
+  display: inline-block;
+  margin-right: 20px;
+  font-weight: bold;
+}
+
+a {
+    color:#385185;
+}
+
+.inline-list li:last-child {
+  color: grey;
+}
+
+.inline-list {
+  text-align: center;
+  margin-top: 150px;
+}
+
+.user-info p {
+  color: black;
+  font-size: 14px;
+}
+
+.sugerencias p {
+  opacity: 0.8;
+  font-size: 14px;
+}
+
+.wrapper {
+  background: #FAFAFA;
+  min-height: 100vh;
+  padding-top: 100px;
+}
+
+.dashboard {
+  padding-top: 38px;
+}
+
+.profile-page {
+  padding-top: 38px;
+}
+
+.user-banner {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.user-banner-info {
+  margin-left: 80px;
+}
