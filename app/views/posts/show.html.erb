@@ -1,3 +1,12 @@
 <h2><%= @post.user.username %></h2>
 
 <%= @post.description %>
+
+<%= link_to 'Dashboard', dashboard_path %>
+
+<% # display only if the owner of the post is the current user logged in %>
+<% if @post.user == current_user%>
+  <%= link_to 'Edit', edit_post_path(@post) %>
+
+  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
