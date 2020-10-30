@@ -7,6 +7,9 @@
           <%= link_to post_path(post.id) do %>
             <div class="post-card border bg-white mt-4 rounded">
               <div class="info-post py-2 px-3">
+                <% if post.user.photo.attached? %>
+                  <%= cl_image_tag post.user.photo.key, class: 'avatar' %>
+                <% end %>
                 <div class="user-info ml-3">
                   <strong><p class="mb-0 text-dark user ml-0"><%= post.user.username %></p></strong>
                   <% #LOCATION --> NEXT FEATURE TO IMPLEMENT %>
@@ -41,7 +44,7 @@
       <div class="col-lg-4">
         <div class="side-menu">
           <div class="user-info d-flex align-items-center">
-            <!--- AVATAR OF THE CURRENT USER --->
+            <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
             <div class="username ml-4">
               <strong><p class="mb-0"><%= current_user.username %></p></strong>
               <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
