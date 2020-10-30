@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+Welcome!
+
+Hi, my name is Guillem Delás, a Junior Web Developer based in Barcelona. This is the repository of my Instagram Copycat. 
