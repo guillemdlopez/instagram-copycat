@@ -4,4 +4,6 @@ class Post < ApplicationRecord
   has_many :likes, dependent: :destroy
 
   has_one_attached :photo
+
+  validates :photo, presence: true
 end

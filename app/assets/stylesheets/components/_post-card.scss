@@ -11,6 +11,7 @@
 .info-post {
   display: flex;
   align-items: center;
+  height: 58px;
 }
 
 .user-info {
@@ -67,4 +68,5 @@
 
 a:hover {
   text-decoration: none;
+  color: black;
 }

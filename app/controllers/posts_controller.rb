@@ -36,7 +36,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to dashboard_path
+    redirect_to root_path
   end
 
   private
@@ -47,6 +47,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description)
+    params.require(:post).permit(:description, :photo)
   end
 end
