@@ -12,3 +12,19 @@
 <% if policy(@post).destroy? %>
   <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
+
+<div class="post-card-comment-form">
+  <%= simple_form_for [@post, @comment] do |f| %>
+    <%= f.input :content %>
+    <%= f.submit class: 'btn btn-primary' %>
+  <% end %>
+</div>
+
+<div class="comments">
+  <% @post.comments.each do |comment| %>
+  <div class="comment-card bg-white mb-2">
+    <strong><p><%= comment.user.username %></p></strong>
+    <%= comment.content %>
+  </div>
+  <% end %>
+</div>
