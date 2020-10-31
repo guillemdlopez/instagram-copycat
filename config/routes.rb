@@ -6,8 +6,7 @@ Rails.application.routes.draw do
   get '/profile', to: 'pages#profile'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :posts, except: [:index] do
-    resources :comments, only: [:index, :new, :create]
+    resources :comments, only: [:new, :create]
   end
-
-  resources :comments, only: [:destroy]
+  resources :comments, only: [:edit, :update, :destroy]
 end

@@ -4,10 +4,10 @@ class PostsController < ApplicationController
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
     @users = User.all
-    @comment = Comment.new
   end
 
   def show
+    @comments = @post.comments
     @comment = Comment.new
   end
 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
-    redirect_to dashboard_path
+    redirect_to dashboard_path, notice: 'Your post was destroyed!'
   end
 
   private

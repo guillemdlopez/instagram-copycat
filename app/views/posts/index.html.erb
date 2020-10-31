@@ -41,7 +41,7 @@
                   <% if !post.comments.empty? %>
                     <%= link_to 'See more comments', post_path(post.id), class: 'link-more-comments' %>
                   <% end %>
-                  <% post.comments.last(2).each do |comment| %>
+                  <% post.comments.last(2).reverse.each do |comment| %>
                     <div class="user-comment d-flex align-items-center mt-2 mb-0">
                       <strong><p class="mb-0 mr-2"><%= comment.user.username %></p></strong>
                       <p class="mb-0 comment-content"><%= comment.content %></p>

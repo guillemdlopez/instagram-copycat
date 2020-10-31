@@ -4,7 +4,7 @@
 
     <%= simple_form_for(@post) do |f| %>
       <%= f.input :description, placeholder: 'Say something inspiring' %>
-      <%= f.input :photo, as: :file %>
+      <%= f.input :photo, as: :file, label: false %>
 
         <%= f.submit class: 'btn btn-primary w-100' %>
     <% end %>

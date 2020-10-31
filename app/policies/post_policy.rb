@@ -13,14 +13,6 @@ class PostPolicy < ApplicationPolicy
     true
   end
 
-  # def new?
-  #   true
-  # end
-
-  # def edit?
-  #   record.user == user
-  # end
-
   def update?
     user_owner_or_admin
   end
