@@ -48,7 +48,7 @@
                       <small><i class="far fa-heart"></i></small>
                     </div>
                   <% end %>
-                  <p class="mt-3" id="publication-date"><small><%= time = Time.now.hour - post.created_at.strftime("%H").to_i%> <%= time == 1 ? 'HOUR' : 'HOURS' %> AGO</small></p>
+                  <p class="mt-3" id="publication-date"><small><%= time = Time.now.hour - post.created_at.strftime("%H").to_i%> <%= time == 1 ? 'HOUR' : time < 1 ? 'HOURS' : 'HOURS' %> AGO</small></p>
                 </div>
             </div>
           <% end %>

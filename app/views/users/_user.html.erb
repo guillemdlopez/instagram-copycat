@@ -6,7 +6,7 @@
       <p class="mb-0 small text-dark text-secondary"><%= user.about %></p>
     </div>
     <% if current_user.is_following?(user.id) %>
-      <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'font-weight-bold text' %>
+      <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'font-weight-bold' %>
     <% else %>
       <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true , class: 'font-weight-bold text-primary'%>
     <% end %>
