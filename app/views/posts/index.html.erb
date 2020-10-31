@@ -44,7 +44,9 @@
       <div class="col-lg-4">
         <div class="side-menu">
           <div class="user-info d-flex align-items-center">
-            <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
+            <% if current_user.photo.attached? %>
+              <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
+            <% end %>
             <div class="username ml-4">
               <strong><p class="mb-0"><%= current_user.username %></p></strong>
               <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
@@ -54,6 +56,19 @@
             <p class="mb-0 text-secondary font-weight-bold">Other users</p>
             <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
           </div>
+          <!--- CARD -->
+          <% @users.sample(4).each do |user| %>
+            <div class="card-sugerencias mt-2">
+              <% if user.photo.attached? %>
+                <%= cl_image_tag user.photo.key, class: 'avatar' %>
+              <% end %>
+              <div class="card-info">
+                <strong><p class="mb-0 text-dark user"><%= user.username %></p></strong>
+                <p class="mb-0 small text-dark text-secondary">onpsique y 13 más siguen esta cuenta</p>
+              </div>
+              <a href="" class="text-primary small font-weight-bolder">Seguir</a>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>
