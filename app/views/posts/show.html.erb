@@ -1,30 +1,42 @@
-<h2><%= @post.user.username %></h2>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-6">
+      <%= cl_image_tag @post.photo.key, class: 'img-post' %>
+    </div>
 
-<%= @post.description %>
+    <div class="col-lg-6 bg-white py-4 px-4">
+      <div class="user-info d-flex align-items-center">
+        <%= cl_image_tag @post.user.photo.key, class: 'avatar' %>
+        <p class="mb-0 ml-2 mr-2"><strong><%= @post.user.username %></strong></p>
+        <%= @post.description %>
+      </div>
+      <!-- ICONS -->
+      <div class="icons-show-post">
+        <%= link_to '<i class="fas fa-home"></i>'.html_safe, dashboard_path %>
+        <% if policy(@post).update?%>
+          <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_post_path(@post) %>
+        <% end %>
+        <% if policy(@post).destroy? %>
+          <%= link_to '<i class="fas fa-trash-alt"></i>'.html_safe, @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </div>
 
-<%= link_to 'Dashboard', root_path %>
-
-<% # display only if the owner of the post is the current user logged in %>
-<% if policy(@post).update?%>
-  <%= link_to 'Edit', edit_post_path(@post) %>
-<% end %>
-
-<% if policy(@post).destroy? %>
-  <%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-
-<div class="post-card-comment-form">
-  <%= simple_form_for [@post, @comment] do |f| %>
-    <%= f.input :content %>
-    <%= f.submit class: 'btn btn-primary' %>
-  <% end %>
-</div>
-
-<div class="comments">
-  <% @post.comments.each do |comment| %>
-  <div class="comment-card bg-white mb-2">
-    <strong><p><%= comment.user.username %></p></strong>
-    <%= comment.content %>
+      <div class="comments mt-2">
+        <% @post.comments.reverse.each do |comment| %>
+        <div class="comment-card bg-white mb-2 d-flex align-items-start">
+          <strong><p class="mb-0 mr-2"><%= comment.user.username %></p></strong>
+          <%= comment.content %>
+          <%= link_to '<small><i class="fas fa-trash-alt ml-2"></i></small>'.html_safe, comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        </div>
+        <% end %>
+        <p class="mt-0" id="publication-date"><small><%= time = Time.now.hour - @post.created_at.strftime("%H").to_i%> <%= time == 1 ? 'HOUR' : 'HOURS' %> AGO</small></p>
+      </div>
+      <div class="post-card-comment-form">
+        <%= simple_form_for [@post, @comment] do |f| %>
+          <%= f.input :content, placeholder: 'Add a comment...', label: false %>
+          <%= f.submit class: 'btn btn-primary w-100' %>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <% end %>
 </div>
