@@ -3,7 +3,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = policy_scope(Post).order(created_at: :desc)
-    @users = User.all
+    @users = User.where.not(id: current_user.id)
   end
 
   def show

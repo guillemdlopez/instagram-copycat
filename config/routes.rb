@@ -9,4 +9,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create]
   end
   resources :comments, only: [:edit, :update, :destroy]
+
+  resources :users, only: [:index] do
+    member do
+      post :follow
+      post :unfollow
+    end
+  end
 end
