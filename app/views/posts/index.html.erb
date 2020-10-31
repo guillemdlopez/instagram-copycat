@@ -66,12 +66,13 @@
               <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
             </div>
           </div>
+          <!-- USERS I AM FOLLOWING -->
           <div class="followers mt-4 d-flex justify-content-between">
             <p class="mb-0 text-secondary font-weight-bold">Users you follow (<%= current_user.following.count %>)</p>
             <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
           </div>
           <div class="following mb-4">
-            <% current_user.following.each do |followee| %>
+            <% current_user.following.take(4).each do |followee| %>
               <div class="followee d-flex align-items-center mb-2">
                 <%= cl_image_tag followee.photo.key, class: 'avatar' %>
                 <p class="mb-0 ml-2"><strong><%= followee.username %></p></strong>
@@ -82,10 +83,10 @@
             <p class="mb-0 text-secondary font-weight-bold">Other users</p>
             <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
           </div>
-          <%= render @users.sample(4) %>
-        </div>
+          <%= render @users.sample(4)%>
         </div>
       </div>
     </div>
   </div>
 </div>
+

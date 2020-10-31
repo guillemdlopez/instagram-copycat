@@ -29,7 +29,9 @@
           <div class="comment-card bg-white mb-2 d-flex align-items-center">
             <strong><p class="mb-0 mr-2"><%= comment.user.username %></p></strong>
             <p class="mb-0 comment-content"><%= comment.content %></p>
-            <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_comment_path(comment) %>
+            <% if  policy(comment).update?%>
+              <%= link_to '<i class="fas fa-edit"></i>'.html_safe, edit_comment_path(comment) %>
+            <% end %>
             <% if policy(comment).destroy? %>
               <%= link_to '<small><i class="fas fa-trash-alt ml-2"></i></small>'.html_safe, comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
             <% end %>
