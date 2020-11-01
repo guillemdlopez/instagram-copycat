@@ -1,6 +1,6 @@
 <div class="container">
-  <div class="user-banner d-flex justify-content-center align-items-center mb-5">
-  <%= cl_image_tag @user.photo.key, class: 'avatar-large mt-5' %>
+  <div class="user-banner d-flex justify-content-center align-items-center mb-5 mt-5">
+  <%= cl_image_tag @user.photo.key, class: 'avatar-large' %>
     <div class="user-banner-info">
       <div class="username-btn d-flex align-items-center">
         <h3 class="font-weight-normal"><%=@user.username%></h3>
@@ -15,6 +15,7 @@
         <h6 class="mb-0 mr-3 text-dark"><strong><%= @user.following.count %></strong> following</h6>
       </div>
       <p class="mb-0 mt-2 text-dark"><%= @user.full_name %></p>
+      <p class="mb-0"> <%= @user.about %> </p>
     </div>
   </div>
   <!-- USER POSTS --->
