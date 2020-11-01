@@ -1,0 +1,38 @@
+.cards {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 30px;
+}
+
+.card {
+  background-size: cover;
+  background-position: center;
+  object-fit: cover;
+  height: 200px;
+}
+
+.post-info {
+  opacity: 0;
+  padding: 80px 0px 80px 0px;
+}
+
+.card:hover .post-info {
+  opacity: 1;
+}
+
+.profile-page {
+  padding-top: 38px;
+}
+
+.user-banner {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.user-banner-info {
+  margin-left: 80px;
+}
+
+#user-info-profile {
+  font-size: 24px;
+}

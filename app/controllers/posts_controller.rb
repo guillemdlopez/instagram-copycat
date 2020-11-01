@@ -20,11 +20,11 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     authorize @post
-
     if @post.save
-      redirect_to post_path(@post), notice: 'The post was succesfully created! :)'
-    else
-      render :new
+      respond_to do |format|
+      format.html { redirect_to post_path(@post), notice: 'The post was succesfully created! :)' }
+      format.js {}
+      end
     end
   end
 
