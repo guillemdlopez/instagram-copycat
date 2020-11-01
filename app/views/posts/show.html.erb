@@ -5,13 +5,15 @@
     </div>
 
     <div class="col-lg-4 bg-white py-4 px-4">
-      <div class="user-info d-flex align-items-center">
-        <%= cl_image_tag @post.user.photo.key, class: 'avatar' %>
-        <p class="mb-0 ml-2 mr-2"><strong><%= @post.user.username %></strong></p>
-        <% if current_user.is_following?(@post.user.id) %>
-          <p class="mb-0 ml-2" id="following-sign">FOLLOWING</p>
-        <% end %>
-      </div>
+      <%= link_to profile_path(@post.user.username) do%>
+        <div class="user-info d-flex align-items-center">
+          <%= cl_image_tag @post.user.photo.key, class: 'avatar' %>
+          <p class="mb-0 ml-2 mr-2"><strong><%= @post.user.username %></strong></p>
+          <% if current_user.is_following?(@post.user.id) %>
+            <p class="mb-0 ml-2" id="following-sign">FOLLOWING</p>
+          <% end %>
+        </div>
+      <% end %>
       <div class="description border-bottom mb-3">
         <p class="mb-2 mt-2"><%= @post.description %></p>
       </div>

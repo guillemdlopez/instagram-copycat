@@ -1,14 +1,14 @@
 <div data-user=<%= user.id %>>
-  <div class="users-follow-unfollow d-flex mb-2 align-items-center">
-    <%= cl_image_tag user.photo.key, class: 'avatar' %>
-    <div class="user-card flex-grow-1 ml-2">
-      <p class="mb-0 users-to-follow-username flex-grow-1"><strong><%= user.username %></p></strong>
-      <p class="mb-0 small text-dark text-secondary"><%= user.about %></p>
+    <div class="users-follow-unfollow d-flex mb-2 align-items-center">
+        <%= cl_image_tag user.photo.key, class: 'avatar' %>
+        <div class="user-card flex-grow-1 ml-2">
+          <p class="mb-0 users-to-follow-username flex-grow-1"><strong><%= user.username %></p></strong>
+          <p class="mb-0 small text-dark text-secondary"><%= user.about %></p>
+        </div>
+      <% if current_user.is_following?(user.id) %>
+        <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'font-weight-bold ml-2' %>
+      <% else %>
+        <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true , class: 'font-weight-bold text-primary ml-2'%>
+      <% end %>
     </div>
-    <% if current_user.is_following?(user.id) %>
-      <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'font-weight-bold ml-2' %>
-    <% else %>
-      <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true , class: 'font-weight-bold text-primary ml-2'%>
-    <% end %>
-  </div>
 </div>

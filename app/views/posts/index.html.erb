@@ -10,7 +10,7 @@
                 <% end %>
                 <div class="user-info ml-3 d-flex align-items-center">
                   <%= link_to profile_path(post.user.username) do %> <!--- LINK TO PROFILE --->
-                    <strong><p class="mb-0 text-dark user ml-0"><%= post.user.username %></p></strong>
+                    <strong><p class="mb-0 text-dark user ml-0" id="username-post"><%= post.user.username %></p></strong>
                   <% end %>
                   <% if current_user.is_following?(post.user.id) %>
                     <p class="mb-0 ml-2" id="following-sign">FOLLOWING</p>
@@ -62,15 +62,17 @@
       <!--- SIDE MENU --->
       <div class="col-lg-4">
         <div class="side-menu">
-          <div class="user-info d-flex align-items-center">
-            <% if current_user.photo.attached? %>
-              <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
-            <% end %>
-            <div class="username ml-4">
-              <strong><p class="mb-0"><%= current_user.username %></p></strong>
-              <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
+          <%= link_to profile_path(current_user.username) do %>
+            <div class="user-info d-flex align-items-center">
+              <% if current_user.photo.attached? %>
+                <%= cl_image_tag current_user.photo.key, class: 'avatar' %>
+              <% end %>
+              <div class="username ml-2">
+                <strong><p class="mb-0"><%= current_user.username %></p></strong>
+                <p class="mb-0 small text-secondary"><%= current_user.full_name %></p>
+              </div>
             </div>
-          </div>
+          <% end %>
           <!-- USERS I AM FOLLOWING -->
           <div class="followers mt-4 d-flex justify-content-between">
             <p class="mb-1 text-secondary font-weight-bold">Users you follow (<%= current_user.following.count %>)</p>
@@ -78,10 +80,12 @@
           </div>
           <div class="following mb-4">
             <% current_user.following.sample(4).each do |followee| %>
-              <div class="followee d-flex align-items-center mb-2">
-                <%= cl_image_tag followee.photo.key, class: 'avatar' %>
-                <p class="mb-0 ml-2"><strong><%= followee.username %></p></strong>
-              </div>
+              <%= link_to profile_path(followee.username) do %>
+                <div class="followee d-flex align-items-center mb-2">
+                  <%= cl_image_tag followee.photo.key, class: 'avatar' %>
+                  <p class="mb-0 ml-2"><strong><%= followee.username %></p></strong>
+                </div>
+              <% end %>
             <% end %>
           </div>
           <div class="other-users d-flex justify-content-between">
