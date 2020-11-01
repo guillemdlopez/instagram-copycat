@@ -10,12 +10,10 @@ Rails.application.routes.draw do
   resources :comments, only: [:edit, :update, :destroy]
 
   resources :users, only: [:index] do
+    resources :profiles, only: [:show]
     member do
       post :follow
       post :unfollow
     end
   end
-
-  get '/profile', to: 'profiles#show', as: :profile
-
 end
