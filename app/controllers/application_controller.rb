@@ -22,13 +22,20 @@ class ApplicationController < ActionController::Base
       "/dashboard"
     end
 
+    def after_sign_up_path_for(resource)
+      "/:username"
+    end
 
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:full_name, :username, :photo, :email, :password, :about)}
-    devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:full_name, :username, :photo, :email, :about, :password, :current_password)}
-  end
+    def after_update_path_for(resource)
+      "/:username"
+    end
 
-  def skip_pundit?
-    devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:full_name, :username, :photo, :email, :password, :about)}
+      devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:full_name, :username, :photo, :email, :about, :password, :current_password)}
+    end
+
+    def skip_pundit?
+      devise_controller? || params[:controller] =~ /(^(rails_)?admin)|(^pages$)/
+    end
 end

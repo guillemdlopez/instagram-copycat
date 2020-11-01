@@ -1,7 +1,8 @@
-<div class="wrapper dashboard">
+<div class="wrapper dashboard pb-5">
   <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pb-5">
       <div class="col-lg-8 avatar-menu">
+        <!-- EACH POST -->
         <% @posts.each do |post| %>
             <div class="post-card border bg-white mt-4 rounded">
               <div class="info-post py-2 px-3">
@@ -60,7 +61,7 @@
         <% end %>
       </div>
       <!--- SIDE MENU --->
-      <div class="col-lg-4">
+      <div class="col-lg-4 pb-5">
         <div class="side-menu">
           <%= link_to profile_path(current_user.username) do %>
             <div class="user-info d-flex align-items-center">
@@ -88,6 +89,7 @@
               <% end %>
             <% end %>
           </div>
+          <!-- ALL THE OTHER USERS -->
           <div class="other-users d-flex justify-content-between">
             <p class="mb-0 text-secondary font-weight-bold">Other users</p>
             <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
