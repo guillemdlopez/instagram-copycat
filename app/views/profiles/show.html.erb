@@ -20,7 +20,7 @@
   <!-- USER POSTS --->
   <% if  current_user == @user && @user.posts.count == 0%>
     <div class="text-center border-top pt-5">
-      <p class="mb-0">You don't have any post! (yet😏)</p>
+      <p class="mb-0">You don't have any posts! (yet😏)</p>
     </div>
     <%= link_to new_post_path do %>
       <h6 class="btn-new-post-profile text-center text-primary font-weight-bold mt-2">👉 Create a post 👈</h6>
@@ -31,7 +31,7 @@
       <%= link_to post_path(post) do %>
         <div class="card" style="background-image: linear-gradient(rgba(2,0,22,0.4) 0%, rgba(0,0,0,0.1) 100%), url('<%= cl_image_path post.photo.key %>')">
           <div class="post-info d-flex text-light justify-content-center align-items-center">
-            <h5 class="mr-5 mb-0"><i class="fas fa-heart"></i>54</h5>
+            <h5 class="mr-5 mb-0"><i class="fas fa-heart"></i> 54</h5>
             <h5 class="mb-0"><i class="fas fa-comment"></i> <%= post.comments.count %></h5>
           </div>
         </div>
