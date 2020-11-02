@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
 
     def after_update_path_for(resource)
-      "/:username"
+      profile_path(resource.username)
     end
 
     def configure_permitted_parameters

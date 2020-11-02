@@ -44,7 +44,7 @@
                     <p class="mr-2 mb-0"> <strong><%= post.user.username %></strong></p>
                     <p class="mr-2 mb-0"><%= post.description %></p>
                   </div>
-                  <% if !post.comments.empty? %>
+                  <% if !post.comments.empty? && post.comments.count > 2 %>
                     <%= link_to 'See more comments', post_path(post.id), class: 'link-more-comments' %>
                   <% end %>
                   <% post.comments.last(2).reverse.each do |comment| %>

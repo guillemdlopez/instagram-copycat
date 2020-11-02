@@ -2,20 +2,6 @@
   <div class="row justify-content-center pb-5">
     <div class="col-lg-6">
       <h2 class="text-center mt-5 mb-3">Look for friends!</h2>
-      <div class="current-user-followers-following d-flex justify-content-between mb-4 bg-white px-2 py-2">
-        <div class="followers">
-          <p><strong>Followers</strong> (<%= pluralize @user.followers.count, 'follower' %>)</p>
-          <% @user.followers.take(3).each do |follower| %>
-            <%= cl_image_tag follower.photo.key, class: 'avatar' %>
-          <% end %>
-        </div>
-        <div class="following">
-          <p><strong>Following</strong> (<%= pluralize @user.following.count, 'following' %>)</p>
-          <% @user.following.take(3).each do |followee| %>
-            <%= cl_image_tag followee.photo.key, class: 'avatar' %>
-          <% end %>
-        </div>
-      </div>
       <% @users.reject { |user| user == current_user }.each do |user| %>
         <div class="user-card mb-4 bg-white px-2 py-2 d-flex align-items-center shadow">
           <%= link_to profile_path(user.username)  do %>
