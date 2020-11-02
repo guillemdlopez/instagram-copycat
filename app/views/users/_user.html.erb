@@ -8,7 +8,7 @@
       <% if current_user.is_following?(user.id) %>
         <%= link_to "Unfollow", unfollow_user_path(user.id), method: :post, remote: true, class: 'font-weight-bold ml-2' %>
       <% else %>
-        <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true , class: 'font-weight-bold text-primary ml-2'%>
+        <%= link_to "Follow", follow_user_path(user.id), method: :post, remote: true , class: 'font-weight-bold text-primary ml-2 follow-link' %>
       <% end %>
     </div>
 </div>
