@@ -1,12 +1,27 @@
 const initChangeFollowLink = () => {
-  const link = document.querySelector('.follow-link')
-  if (link) {
-    link.addEventListener('click', (event) => {
-      event.target.innerText = 'Unfollow'
-      console.log(event);
-      event.target.classList.add('change-follow-link')
-    });
-  }
+  const links = document.querySelectorAll('.follow-link')
+  links.forEach((link) => {
+    if (link) {
+      console.log(link);
+      link.addEventListener('click', (event) => {
+        event.target.innerText = 'Unfollow'
+        event.target.classList.add('change-follow-link')
+      });
+    }
+  })
 }
 
-export { initChangeFollowLink };
+const initChangeUnfollowLink = () => {
+  const unfollowLinks = document.querySelectorAll('.unfollow-link')
+  unfollowLinks.forEach((unfollowLink) => {
+    if (unfollowLink) {
+      unfollowLink.addEventListener('click', (event) =>{
+        event.target.innerText = 'Follow'
+        event.target.classList.add('change-unfollow-link')
+      });
+    }
+  })
+}
+
+
+export { initChangeFollowLink, initChangeUnfollowLink };

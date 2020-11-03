@@ -77,7 +77,6 @@
           <!-- USERS I AM FOLLOWING -->
           <div class="followers mt-4 d-flex justify-content-between">
             <p class="mb-1 text-secondary font-weight-bold">Users you follow (<%= current_user.following.count %>)</p>
-            <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
           </div>
           <div class="following mb-4">
             <% current_user.following.sample(4).each do |followee| %>
@@ -92,7 +91,7 @@
           <!-- ALL THE OTHER USERS -->
           <div class="other-users d-flex justify-content-between">
             <p class="mb-0 text-secondary font-weight-bold">Other users</p>
-            <a href="" class="small font-weight-bolder text-dark">Ver todo</a>
+            <%= link_to 'See all', users_path, class: 'small font-weight-bolder text-dark' %>
           </div>
           <%= render @users.sample(4)%>
         </div>

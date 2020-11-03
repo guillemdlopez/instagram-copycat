@@ -5,12 +5,13 @@ require("channels")
 
 import "bootstrap";
 
-import { initChangeFollowLink } from '../components/follow-link';
+import { initChangeFollowLink, initChangeUnfollowLink } from '../components/follow-link';
 import { greetingHomePage } from '../components/greeting';
 import { deletePost, deleteComment } from '../plugins/init_sweetalert';
 
 document.addEventListener('turbolinks:load', () => {
   initChangeFollowLink();
+  initChangeUnfollowLink();
   greetingHomePage();
   deletePost('#btn-delete', {
   title: "Are you sure?",
@@ -32,13 +33,17 @@ document.addEventListener('turbolinks:load', () => {
     title: 'Are you sure?',
     text: 'This action cannot be reversed',
     icon: 'warning',
-    button: 'Delete',
+    buttons: ['Cancel', 'Delete'],
     dangerMode: true,
   }, (value) => {
     if (value) {
       const links = document.querySelectorAll("#link");
       links.forEach((link) => {
         link.click();
+      })
+    } else {
+      swal('Your comment is saved!', {
+        icon: 'success'
       })
     }
   });
