@@ -6,13 +6,13 @@ const fitMapToMarkers = (map, markers) => {
   map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
 };
 
-const addMarkersToMap = (map, markers) => {
-  markers.forEach((marker) => {
-    new mapboxgl.Marker()
-      .setLngLat([ marker.lng, marker.lat ])
-      .addTo(map);
-  });
-};
+// const addMarkersToMap = (map, markers) => {
+//   markers.forEach((marker) => {
+//     new mapbox
+//       .setLngLat([ marker.lng, marker.lat ])
+//       .addTo(map);
+//   });
+// };
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
@@ -25,9 +25,13 @@ const initMapbox = () => {
     });
 
     const markers = JSON.parse(mapElement.dataset.markers);
-
-  addMarkersToMap(map, markers);
-  fitMapToMarkers(map, markers);
+    markers.forEach((marker) => {
+      new mapboxgl.Marker()
+        .setLngLat([ marker.lng, marker.lat ])
+        .addTo(map)
+    })
+    // fitMapToMarkers(map, markers)
+    fitMapToMarkers(map, markers);
   }
 };
 
