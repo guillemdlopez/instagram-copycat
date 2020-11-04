@@ -5,21 +5,24 @@
         <!-- EACH POST -->
         <% @posts.each do |post| %>
             <div class="post-card border bg-white mt-4 rounded">
-              <!-- USERNAME, LOCATION -->
+              <!-- USERNAME, LOCATION, FOLLOWING SIGN -->
               <div class="info-post py-2 px-3">
                 <% if post.user.photo.attached? %>
                   <%= cl_image_tag post.user.photo.key, class: 'avatar' %>
                 <% end %>
                 <div class="user-info ml-3">
-                  <div class="username-following d-flex">
+                  <div class="username-following d-flex align-items-center">
                     <%= link_to profile_path(post.user.username) do %> <!--- LINK TO PROFILE --->
                       <strong><p class="mb-0 text-dark user ml-0" id="username-post"><%= post.user.username %></p></strong>
                     <% end %>
+                    <% if current_user.is_following?(post.user) %>
+                      <p class="mb-0 ml-2" id="following-sign">FOLLOWING</p>
+                    <% end %>
                   </div>
-                  <p class="mb-0 small text-secondary"><%= post.location %></p>
+                    <p class="mb-0 small text-secondary"><%= post.location %></p>
                 </div>
+                <strong><p class="mb-0">···</p></strong>
               </div>
-
               <div class="image-post text-center">
                 <%= link_to post_path(post.id) do %>
                 <% if post.photo.attached? %>
