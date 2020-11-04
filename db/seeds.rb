@@ -20,14 +20,32 @@ user_1 = User.create!(
   full_name: 'Guillem Delás',
   email: 'guillemdelas@hotmail.com',
   password: 123456,
-  username: 'WeirdoQueen55',
+  username: 'doker55',
   admin: true,
   about: 'Hello, my name is Guillem, a Junior Web Developer based in Barcelona!👾🧑🏽‍💻 Wanna hang out? Follow me!😃'
+  )
+
+post_admin = Post.create!(
+  description: "Welcome and thank you for passing by! This is my Instagram copycat (cheap version, obviosuly, but still a very decent one!)
+  In this application you'll be able to:
+  · Share a post: with a description and an image🌅🌄😍, along with its location🏝🏔🏠 (although it is not required)
+  · Edit and update the post🔧
+  · Delete ❌ some shameful posts🤭😱 (we've all been there🤪)
+  · Follow and unfollow your friends
+  · And...
+
+  A LOT MORE! Just give it a try and discover everything this app has to offer along the way. There are some new features to come in the near future.
+  See you in the app! - Guillem",
+  user_id: user_1.id
   )
 
 #AVATAR
 file = URI.open("https://media-exp1.licdn.com/dms/image/C4D35AQG8YLjk39lfTA/profile-framedphoto-shrink_400_400/0?e=1604595600&v=beta&t=B58ZEKmNqnPZnj9RpAxMfl1Wav5tOtxGRxF682_f9Y8")
 user_1.photo.attach(io: file, filename: 'my_avatar.jpg', content_type: 'image/jpeg')
+
+post_file = URI.open('https://source.unsplash.com/1600x900/?welcome')
+post_admin.photo.attach(io: post_file, filename: 'welcome.jpg', content_type: 'image/jpeg')
+
 
 puts "Created the first user: #{user_1.full_name}: YOU, THE ADMIN!"
 
@@ -133,8 +151,18 @@ user_6 = User.create!(
   about: "Hey, I'm Marc! Follow me!"
   )
 
+post_5 = Post.create!(
+  description: 'Rolling rolling rolling...🛹🤘',
+  user_id: user_6.id,
+  location: "Sabadell"
+  )
+
+
 file = URI.open('https://source.unsplash.com/1600x900/?avatar')
 user_6.photo.attach(io: file, filename: 'avatar.jpeg', content_type: 'image/jpeg')
+
+post_file = URI.open("https://source.unsplash.com/1600x900/?skate")
+post_5.photo.attach(io: post_file, filename: 'post_1.jpg', content_type: 'image/jpg')
 
 user_7 = User.create!(
   full_name: 'Sabine Holmann',
@@ -144,8 +172,19 @@ user_7 = User.create!(
   about: "Hey, Ich bin Sabine! Folgen Sie mir!"
   )
 
+post_6 = Post.create!(
+  description: 'Ich liebe Kreuzberg!',
+  user_id: user_7.id,
+  location: 'Kreuzberg, Berlin'
+  )
+
+
 file = URI.open('https://source.unsplash.com/1600x900/?avatar')
 user_7.photo.attach(io: file, filename: 'avatar.jpeg', content_type: 'image/jpeg')
+
+post_file = URI.open("https://source.unsplash.com/1600x900/?Kreuzberg")
+post_6.photo.attach(io: post_file, filename: 'post_1.jpg', content_type: 'image/jpg')
+
 
 #NEW USER
 user_8 = User.create!(
@@ -156,7 +195,7 @@ user_8 = User.create!(
   about: "Hey, I'm Sara! Follow me!"
   )
 
-post_5 = Post.create!(
+post_7 = Post.create!(
   description: 'Rosalía bájale!',
   location: 'Palau St. Jordi, Barcelona',
   user_id: user_8.id
@@ -168,19 +207,30 @@ user_8.photo.attach(io: file, filename: 'avatar.jpeg', content_type: 'image/jpeg
 
 #POST
 post_file = URI.open("https://source.unsplash.com/1600x900/?rosalia, concert")
-post_5.photo.attach(io: post_file, filename: 'post_5.jpg', content_type: 'image/jpg')
+post_7.photo.attach(io: post_file, filename: 'post_5.jpg', content_type: 'image/jpg')
 
 #NEW USER
 user_9 = User.create!(
   full_name: 'Helena Vilanova',
   email: 'helena_vila5@gmail.com',
-  password: '_justhelenavila',
-  username: 'helenitahelenavila55',
+  password: 'helenitahelenavila55',
+  username: '_justhelenavila',
   about: "Hey, I'm Helena! Follow me!"
   )
 
+post_8 = Post.create!(
+  description: 'I love theater😍💕🎭',
+  location: 'Institut del Teatre, Barcelona',
+  user_id: user_9.id
+  )
+
+# AVATAR
 file = URI.open('https://source.unsplash.com/1600x900/?avatar')
-user_9.photo.attach(io: file, filename: 'avatar.jpeg', content_type: 'image/jpeg')
+user_9.photo.attach(io: file, filename: 'avatar.jpeg', content_type: 'image/jpg')
+
+#POST
+post_file = URI.open('https://source.unsplash.com/1600x900/?theater')
+post_8.photo.attach(io: post_file, filename: 'post_8.jpg', content_type: 'image/jpg')
 
 user_10 = User.create!(
   full_name: 'Manel Sapés',
