@@ -8,11 +8,15 @@ import "bootstrap";
 import { initChangeFollowLink, initChangeUnfollowLink } from '../components/follow-link';
 import { greetingHomePage } from '../components/greeting';
 import { deletePost, deleteComment } from '../plugins/init_sweetalert';
+import { socialLinks } from '../functions/home_social_links';
+import { initMapbox } from '../plugins/init_mapbox';
 
 document.addEventListener('turbolinks:load', () => {
   initChangeFollowLink();
   initChangeUnfollowLink();
   greetingHomePage();
+  socialLinks();
+  initMapbox();
   deletePost('#btn-delete', {
   title: "Are you sure?",
   text: "This action cannot be reversed",

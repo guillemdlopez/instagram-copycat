@@ -4,6 +4,7 @@
 
     <%= simple_form_for(@post) do |f| %>
       <%= f.input :description, placeholder: 'Say something inspiring' %>
+      <%= f.input :location, placeholder: 'Parc Güell, Barcelona' %>
       <%= f.input :photo, as: :file, label: false %>
 
         <%= f.submit class: 'btn btn-primary w-100' %>

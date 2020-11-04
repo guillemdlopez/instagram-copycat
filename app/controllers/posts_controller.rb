@@ -9,6 +9,12 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments
     @comment = Comment.new
+    @markers = [
+      {
+        lat: @post.latitude,
+        lng: @post.longitude,
+      }
+    ]
   end
 
   def new
@@ -51,6 +57,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:description, :photo)
+    params.require(:post).permit(:description, :photo, :location)
   end
 end

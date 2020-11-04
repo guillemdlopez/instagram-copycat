@@ -2,7 +2,8 @@
   <div class="row justify-content-center mt-5">
     <div class="col-lg-6 bg-white px-4 py-4 rounded">
       <%= simple_form_for(@post) do |f| %>
-        <%= f.input :description %>
+        <%= f.input :description, placeholder: 'Say something inspiring' %>
+        <%= f.input :location, placeholder: 'Parc Güell, Barcelona' %>
         <%= f.file_field :photo, as: :file %>
         <%= f.submit class: 'btn btn-primary w-100 mt-3' %>
       <% end %>
