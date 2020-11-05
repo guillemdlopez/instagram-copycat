@@ -10,6 +10,7 @@ import { greetingHomePage } from '../components/greeting';
 import { deletePost, deleteComment } from '../plugins/init_sweetalert';
 import { socialLinks } from '../functions/home_social_links';
 import { initMapbox } from '../plugins/init_mapbox';
+import { initAutocomplete } from '../plugins/init_autocomplete';
 
 document.addEventListener('turbolinks:load', () => {
   initChangeFollowLink();
@@ -17,6 +18,7 @@ document.addEventListener('turbolinks:load', () => {
   greetingHomePage();
   socialLinks();
   initMapbox();
+  initAutocomplete();
   deletePost('#btn-delete', {
   title: "Are you sure?",
   text: "This action cannot be reversed",

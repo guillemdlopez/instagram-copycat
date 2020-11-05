@@ -17,7 +17,7 @@
     <!-- POST -->
     <div class="col-lg-4 bg-white py-4 px-4">
       <%= link_to profile_path(@post.user.username) do%>
-        <div class="user-info d-flex align-items-center border-bottom">
+        <div class="user-info d-flex align-items-start border-bottom">
           <%= cl_image_tag @post.user.photo.key, class: 'avatar' %>
           <div class="username-location ml-2 mr-2">
             <p class="mb-0"><strong><%= @post.user.username %></strong></p>
