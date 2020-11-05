@@ -2,7 +2,6 @@ const initChangeFollowLink = () => {
   const links = document.querySelectorAll('.follow-link')
   links.forEach((link) => {
     if (link) {
-      console.log(link);
       link.addEventListener('click', (event) => {
         event.target.innerText = 'Unfollow'
         event.target.classList.add('change-follow-link')

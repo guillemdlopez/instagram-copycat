@@ -17,8 +17,6 @@ document.addEventListener('turbolinks:load', () => {
   initChangeUnfollowLink();
   greetingHomePage();
   socialLinks();
-  initMapbox();
-  initAutocomplete();
   deletePost('#btn-delete', {
   title: "Are you sure?",
   text: "This action cannot be reversed",
@@ -53,4 +51,6 @@ document.addEventListener('turbolinks:load', () => {
       })
     }
   });
+  initMapbox();
+  initAutocomplete();
 });
